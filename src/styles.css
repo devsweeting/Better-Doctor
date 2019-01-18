@@ -16,3 +16,19 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.doctors-card {
+  margin-top: 20px;
+  margin-right: 15px;
+}
+
+#doctors-list {
+  margin: 20px;
+  padding-bottom: 30px;
+}
+
+#doctor-info {
+  padding: 20px;
+  padding-left: 30px;
+  text-align: justify;
+}

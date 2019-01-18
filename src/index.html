@@ -34,13 +34,29 @@
         </div>
       </form>
 
-      <div class="card">
-        <select multiple id="doctors-list">
-          <option class="doctors" value="03642c02ff9d4e9e79219446fcc769f8">Dr. Kelsey Coffrey, test</option>
-          <option class="doctors" value="a8c19b127e66c21d624f3744d49813e3">Dr. Joshua Aldridge, test</option>
-          <option class="doctors" value="eb9d3f3292bac84d13b0e6e0fb6025bb">Dr. Marie Baxani, test</option>
-          <option class="doctors" value="94276595eaa55eeca4aeedd50d598ca6">Dr. Shelley Sneeden, test </option>
-        </select>
+      <div class="doctors-card">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Click on a doctor to display their details:</h5>
+            <select multiple id="doctors-list">
+              <option class="doctors" value="03642c02ff9d4e9e79219446fcc769f8">Dr. Kelsey Coffrey, test</option>
+              <option class="doctors" value="a8c19b127e66c21d624f3744d49813e3">Dr. Joshua Aldridge, test</option>
+              <option class="doctors" value="eb9d3f3292bac84d13b0e6e0fb6025bb">Dr. Marie Baxani, test</option>
+              <option class="doctors" value="94276595eaa55eeca4aeedd50d598ca6">Dr. Shelley Sneeden, test </option>
+            </select>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card" id="doctor-info">
+              <h3>Details: </h3>
+              <h6>Name: <span id="doctor-name"></span></h6>
+              <h6>Address: <span id="doctor-address"></span></h6>
+              <h6>Contact: <span id="doctor-contact"></span></h6>
+              <h6>Website: <span id="doctor-website"></span></h6>
+              <h6>Accepting Patients: </h6>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
