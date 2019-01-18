@@ -34,5 +34,10 @@ $(document).ready(function() {
   //     });
   //     debugger
   //   });
-  // });
+
+
+    $('.doctors-list option').on('click', function() {
+      let doctorUID = $(this).val();
+      console.log(doctorUID);
+    });
 });
