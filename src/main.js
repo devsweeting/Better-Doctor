@@ -37,7 +37,27 @@ $(document).ready(function() {
 
 
     $('.doctors-list option').on('click', function() {
-      let doctorUID = $(this).val();
+      const doctorUID = $(this).val();
       console.log(doctorUID);
+      const doctorDetails = new Api();
+      const doctorDetailsPromise = doctorDetails.callDetails(doctorUID);
+      doctorDetailsPromise.then(function(response) {
+        let details = JSON.parse(response);
+        let firstName = details.data.profile.first_name;
+        let lastName = details.data.profile.last_name;
+        let lat = details.data.practices[0].lat;
+        let lon = details.data.practices[0].lon;
+        let img = details.data.profile.image_url;
+        let city = details.data.practices[0].visit_address.city;
+        let state = details.data.practices[0].visit_address.state;
+        let zip = details.data.practices[0].visit_address.zip;
+        let street = details.data.practices[0].visit_address.street;
+        let address = street + " " + city + ", " + state + " " + zip
+        let contact = details.data.practices[0].phones[0].number
+        // let website =
+        let acceptingPatients = details.data.practices[0].accepts_new_patients
+        let bio = details.data.profile.bio
+        debugger;
+      });
     });
 });
