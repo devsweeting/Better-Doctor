@@ -30,7 +30,7 @@
             <option value="best-match-asc">Best Match</option>
             <option value="distance-asc">Nearest Proximity</option>
           </select>
-          <button class="btn btn-success" type="submit">Submit</button>
+          <button id="submit-button" class="btn btn-success" type="submit">Submit</button>
         </div>
       </form>
 
@@ -45,20 +45,30 @@
                 <option class="doctors" value="eb9d3f3292bac84d13b0e6e0fb6025bb">Dr. Marie Baxani, test</option>
                 <option class="doctors" value="94276595eaa55eeca4aeedd50d598ca6">Dr. Shelley Sneeden, test </option>
               </select>
-              <button class="btn btn-success" type="submit">Doctor Details</button>
+              <button class="btn btn-info" type="submit">Doctor Details</button>
             </form>
           </div>
 
           <div class="col-md-8">
             <div class="card" id="doctor-info">
-              <h3>Details: </h3>
+              <div class="profile-pic">
+                <h3>Details: </h3>
+                <img src="https://asset1.betterdoctor.com/assets/general_doctor_female.png" alt="Profile Picture">
+              </div>
               <h6>Name: <span id="doctor-name"></span></h6>
+              <h6><span id="doctor-bio"></span></h6>
               <h6>Address: <span id="doctor-address"></span></h6>
               <h6>Contact: <span id="doctor-contact"></span></h6>
               <h6>Website: <span id="doctor-website"></span></h6>
-              <h6>Accepting Patients: </h6>
+              <h6>Accepting Patients: <span id="accepting-paitents"></span></h6>
             </div>
+            <button id="show-map" class="btn btn-danger"type="button" name="button">Show Map</button>
           </div>
+        </div>
+      </div>
+      <div class="card map-body">
+        <div id="map">
+          <h1>map here</h1>
         </div>
       </div>
     </div>
