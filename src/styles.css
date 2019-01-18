@@ -1,3 +1,18 @@
-body {
-  background-color: #7FDBFF;
+.jumbotron {
+  background-image: url(https://img.icons8.com/cotton/2x/herbal-medicine.png);
+  background-position: center;
+  background-size: contain;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: right;
+  text-align: justify;
+}
+
+.user-card {
+  padding: 20px;
+}
+
+.user-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

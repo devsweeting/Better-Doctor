@@ -2,15 +2,37 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    
-    <title>Ping Pong</title>
+
+    <title>Better Doctor</title>
   </head>
   <body>
-    <form id="ping-pong-form">
-      <label for="goal">Enter a number:</label>
-      <input id="goal" type="number">
-      <button type="submit">Submit</button>
-    </form>
-    <ul id="solution"></ul>
+    <div class="jumbotron">
+      <h1>Better Doctor</h1>
+      <h4>Find the doctor right for you</h4>
+    </div>
+    <div class="container">
+      <form id="doctor-search">
+        <div class="card user-card">
+          <select multiple class="user-input" id="symptons">
+            <option value="">No Symptons (Not Applicable)</option>
+            <!-- append API Call symptons here -->
+          </select>
+          <div class="user-input">
+            <label for="address">Enter your address: </label>
+            <input id="address" type="text" value="45.5122,-122.6587">
+          </div>
+          <div class="user-input">
+            <label for="distance">Enter a search parameter:</label>
+            <input id="distance" type="number" value="10">
+          </div>
+          <select class="user-input" id="sort-by">
+            <option value="full-name-asc">Full Name</option>
+            <option value="best-match-asc">Best Match</option>
+            <option value="distance-asc">Nearest Proximity</option>
+          </select>
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

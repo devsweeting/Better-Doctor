@@ -1,16 +1,29 @@
-import { pingPong } from './ping-pong';
+import { Api } from './api';
 import './styles.css';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 $(document).ready(function() {
-  $('#ping-pong-form').submit(function(event) {
+  // Calls list of symptons to be displayed in DOM after loading
+  // let symptons = new Api();
+  // let symptonsPromise = symptons.callSymptons();
+  // symptonsPromise.then(function(response) {
+  //   let selections = JSON.parse(response);
+  //   selections.data.forEach(function(sympton) {
+  //     $("#symptons").append("<option value=" + sympton.uid + ">" + sympton.name + "</option>");
+  //   });
+  // });
+
+  // Where user selects search parameters to find local doctor
+  $('#doctor-search').submit(function(event) {
     event.preventDefault();
-    var goal = $('#goal').val();
-    var output = pingPong(goal);
-    output.forEach(function(element) {
-      $('#solution').append("<li>" + element + "</li>");
+    const userSymptons = $("#symptons").val();
+    const userAddress = $("#address").val();
+    const userDistance =$("#distance").val();
+    const sortBy = $("#sort-by").val();
+    const doctorSearch = new Api();
+    l
+    debugger;
     });
   });
-});
