@@ -2,6 +2,7 @@
   background-image: url(https://img.icons8.com/cotton/2x/herbal-medicine.png);
   background-position: center;
   background-size: contain;
+  color: #465DFF;
   height: 200px;
   background-repeat: no-repeat;
   background-position: right;
@@ -22,13 +23,21 @@
 }
 
 .doctors-card {
+  /* display: none; */
   margin-top: 20px;
   margin-right: 15px;
 }
 
 .doctors-list {
   margin: 20px;
-  padding-bottom: 30px;
+  margin-top: 50px;
+  margin-left: 50px;
+  padding-bottom: 100px;
+}
+
+#details-button {
+  margin: 20px;
+  margin-left: 25px
 }
 
 #doctor-info {
@@ -45,7 +54,8 @@ img {
   float: right;
 }
 
-.map-body {
+#map-body {
+  display: none;
   padding: 20px;
   margin-top: 20px;
 }

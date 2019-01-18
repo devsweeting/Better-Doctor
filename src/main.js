@@ -5,8 +5,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 $(document).ready(function() {
-  // Calls list of symptons to be displayed in DOM after loading
 
+  // ----- Calls list of conditions in DOM -----
   // let symptons = new Api();
   // let symptonsPromise = symptons.callSymptons();
   // symptonsPromise.then(function(response) {
@@ -16,27 +16,28 @@ $(document).ready(function() {
   //   });
   // });
 
-  // Where user selects search parameters to find local doctor
+  // ----- Where user selects search parameters to find local doctor ----
+  $('#doctor-search').submit(function(event) {
+    event.preventDefault();
+    const userSymptons = $("#symptons").val();
+    const userAddress = $("#address").val();
+    const userDistance =$("#distance").val();
+    const sortBy = $("#sort-by").val();
+    // $(".doctors-list option").remove()
+    const doctorSearch = new Api();
+    const doctorsPromise = doctorSearch.callDoctor(userSymptons, userAddress, userDistance, sortBy);
+      doctorsPromise.then(function(response) {
+        let doctors = JSON.parse(response);
+        doctors.data.forEach(function(doctor) {
+        $("#doctors-form").append("<option class='doctors' value=" + doctor.uid + ">" + "Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name  + ", " + doctor.profile.title + "</option>");
+      });
+      debugger;
+    });
+    $(".doctors-card").show();
+  });
 
-  // $('#doctor-search').submit(function(event) {
-  //   event.preventDefault();
-  //   const userSymptons = $("#symptons").val();
-  //   const userAddress = $("#address").val();
-  //   const userDistance =$("#distance").val();
-  //   const sortBy = $("#sort-by").val();
-  //   $(".doctors").remove()
-  //   const doctorSearch = new Api();
-  //   const doctorsPromise = doctorSearch.callDoctor(userSymptons, userAddress, userDistance, sortBy);
-  //     doctorsPromise.then(function(response) {
-  //       let doctors = JSON.parse(response);
-  //       doctors.data.forEach(function(doctor) {
-  //       $("#doctors-list").append("<option class='doctors' value=" + doctor.uid + ">" + "Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name  + ", " + doctor.profile.title + "</option>");
-  //     });
-  //     debugger
-  //   });
-
-
-    $('.doctors-list option').on('click', function() {
+// ---- Call for Individual Doctor Information ----
+    $('#doctors-form option').on('click', function() {
       const doctorUID = $(this).val();
       console.log(doctorUID);
       const doctorDetails = new Api();
@@ -58,7 +59,6 @@ $(document).ready(function() {
         // let website =
         let acceptingPatients = details.data.practices[0].accepts_new_patients;
         let bio = details.data.profile.bio;
-
         $("#doctor-image").html(`<img src="${img}" alt="Profile Picture">`);
         $("#doctor-name").html(fullName);
         $("#doctor-bio").html(bio);
@@ -68,5 +68,12 @@ $(document).ready(function() {
         $("#accepting-paitents").html(acceptingPatients);
         debugger;
       });
+    });
+
+    // ---- Show map here ---
+    $('#show-map').click(function(event) {
+      event.preventDefault();
+
+      $("#map-body").show();
     });
 });

@@ -2,7 +2,6 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
     <title>Better Doctor</title>
   </head>
   <body>
@@ -33,22 +32,20 @@
           <button id="submit-button" class="btn btn-success" type="submit">Submit</button>
         </div>
       </form>
-
       <div class="doctors-card">
         <div class="row">
           <div class="col-md-4">
             <h5>Click on a doctor to display their details:</h5>
             <form class="doctors-list">
-              <select multiple class="doctors-list">
+              <select multiple id="doctors-form">
                 <option class="doctors" value="03642c02ff9d4e9e79219446fcc769f8">Dr. Kelsey Coffrey, test</option>
                 <option class="doctors" value="a8c19b127e66c21d624f3744d49813e3">Dr. Joshua Aldridge, test</option>
                 <option class="doctors" value="eb9d3f3292bac84d13b0e6e0fb6025bb">Dr. Marie Baxani, test</option>
                 <option class="doctors" value="94276595eaa55eeca4aeedd50d598ca6">Dr. Shelley Sneeden, test </option>
               </select>
-              <button class="btn btn-info" type="submit">Doctor Details</button>
+              <button id="details-button"class="btn btn-info" type="submit">Doctor Details</button>
             </form>
           </div>
-
           <div class="col-md-8">
             <div class="card" id="doctor-info">
               <div class="profile-pic">
@@ -62,11 +59,11 @@
               <h6>Website: <span id="doctor-website"></span></h6>
               <h6>Accepting Patients: <span id="accepting-paitents"></span></h6>
             </div>
-            <button id="show-map" class="btn btn-danger"type="button" name="button">Show Map</button>
+            <button id="show-map" class="btn btn-danger" type="button" name="button">Show Map</button>
           </div>
         </div>
       </div>
-      <div class="card map-body">
+      <div id="map-body" class="card">
         <div id="map">
           <h1>map here</h1>
         </div>
