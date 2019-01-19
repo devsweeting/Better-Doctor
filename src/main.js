@@ -4,17 +4,30 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+function errorMessage(error){
+  $("#error")
+    .show()
+    .slideDown(500)
+    .delay(8000)
+    .slideUp(500);
+  $(".error")
+    .html(`There was error processing your query: ${error.message}. Please Try Again`)
+    .delay(8000)
+    .slideUp(1000);
+}
+
 $(document).ready(function() {
 
   // ----- Calls list of conditions in DOM -----
-  // let symptons = new Api();
-  // let symptonsPromise = symptons.callSymptons();
-  // symptonsPromise.then(function(response) {
-  //   let selections = JSON.parse(response);
-  //   selections.data.forEach(function(sympton) {
-  //     $("#symptons").append("<option value=" + sympton.uid + ">" + sympton.name + "</option>");
-  //   });
-  // });
+  let symptons = new Api();
+  let symptonsPromise = symptons.callSymptons();
+  symptonsPromise.then(function(response) {
+    let selections = JSON.parse(response);
+    selections.data.forEach(function(sympton) {
+      $("#symptons").append("<option value=" + sympton.uid + ">" + sympton.name + "</option>");
+    });
+  });
 
   // ----- Where user selects search parameters to find local doctor ----
   $('#doctor-search').submit(function(event) {
@@ -26,20 +39,32 @@ $(document).ready(function() {
     // $(".doctors-list option").remove()
     const doctorSearch = new Api();
     const doctorsPromise = doctorSearch.callDoctor(userSymptons, userAddress, userDistance, sortBy);
-      doctorsPromise.then(function(response) {
-        let doctors = JSON.parse(response);
-        doctors.data.forEach(function(doctor) {
-        $("#doctors-form").append("<option class='doctors' value=" + doctor.uid + ">" + "Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name  + ", " + doctor.profile.title + "</option>");
+    const doctorsArray = []
+    doctorsPromise.then(function(response) {
+      let doctors = JSON.parse(response);
+      doctors.data.forEach(function(doctor) {
+      $("#doctors-form").append("<option class='doctors' value=" + doctor.uid + ">" + "Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name  + ", " + doctor.profile.title + "</option>");
+      doctorsArray.push(doctor)
+      console.log(doctorsArray);
       });
-      debugger;
-    });
     $(".doctors-card").show();
-  });
+  }, function(error) {
+    errorMessage(error)
+  })
+});
 
-// ---- Call for Individual Doctor Information ----
-    $('#doctors-form option').on('click', function() {
-      const doctorUID = $(this).val();
-      console.log(doctorUID);
+
+
+    // ---- alternate .onclick call -----
+
+    // $('#doctors-form option').on('click', function() {
+    //   const doctorUID = $(this).val();
+
+
+    // ---- Call for Individual Doctor Information ----
+    $('.doctors-list').submit(function(event) {
+      event.preventDefault();
+      const doctorUID = $("#doctors-form").val();
       const doctorDetails = new Api();
       const doctorDetailsPromise = doctorDetails.callDetails(doctorUID);
       doctorDetailsPromise.then(function(response) {
@@ -66,7 +91,6 @@ $(document).ready(function() {
         $("#doctor-contact").html(contact);
         $("#doctor-website").html();
         $("#accepting-paitents").html(acceptingPatients);
-        debugger;
       });
     });
 

@@ -10,6 +10,12 @@
       <h4>Find the doctor right for you</h4>
     </div>
     <div class="container">
+      <div class="alert alert-danger" role="alert" id="error">
+        <p class="error"></p>
+      </div>
+      <div class="alert alert-warning" role="alert" id="no-doctors">
+        There were not any doctors that met your requirements. Please try a different search.
+      </div>
       <form id="doctor-search">
         <div class="card user-card">
           <select class="user-input" id="symptons">
@@ -21,7 +27,7 @@
             <input id="address" type="text" value="45.5122,-122.6587">
           </div>
           <div class="user-input">
-            <label for="distance">Enter a search parameter:</label>
+            <label for="distance">Enter a search distance:</label>
             <input id="distance" type="number" value="10">
           </div>
           <select class="user-input" id="sort-by">
