@@ -35,6 +35,7 @@ $(document).ready(function() {
   let symptonsPromise = symptons.callSymptons();
   symptonsPromise.then(function(response) {
     let selections = JSON.parse(response);
+    console.log(selections);
     selections.data.forEach(function(sympton) {
       $("#symptons").append("<option value=" + sympton.uid + ">" + sympton.name + "</option>");
     });
@@ -86,6 +87,7 @@ $(document).ready(function() {
       const doctorDetailsPromise = doctorDetails.callDetails(doctorUID);
       doctorDetailsPromise.then(function(response) {
         let details = JSON.parse(response);
+        debugger;
         let firstName = details.data.profile.first_name;
         let lastName = details.data.profile.last_name;
         let fullName = firstName + " " + lastName;
@@ -114,8 +116,8 @@ $(document).ready(function() {
 
     // ---- Show map here --- Try over weekend
 
-    // $('#show-map').click(function(event) {
-    //   event.preventDefault();
+    $('#show-map').click(function(event) {
+      event.preventDefault();
     //   let mapElement = document.getElementById('map');
     //   let loadPromise = Map.loadMap();
     //   loadPromise.then(function(googleMaps) {
@@ -123,6 +125,6 @@ $(document).ready(function() {
     //     let doctorOffice = {lat: lat, lng: lon};
     //     let marker = new google.maps.Marker({position: doctorOffice, map: map});
     //   });
-    //   $("#map-body").show();
-    // });
+      $("#map-body").show();
+    });
 });
