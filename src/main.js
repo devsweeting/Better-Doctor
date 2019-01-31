@@ -44,6 +44,7 @@ $(document).ready(function() {
   // ----- Where user selects search parameters to find local doctor ----
   $('#doctor-search').submit(function(event) {
     event.preventDefault();
+    $("#doctors-form").empty();
     const userSymptons = $("#symptons").val();
     const userAddress = $("#address").val();
     const userDistance =$("#distance").val();
@@ -54,8 +55,8 @@ $(document).ready(function() {
     doctorsPromise.then(function(response) {
       let doctors = JSON.parse(response);
       doctors.data.forEach(function(doctor) {
-      $("#doctors-form").append("<option class='doctors' value=" + doctor.uid + ">" + "Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name  + ", " + doctor.profile.title + "</option>");
-      doctorsArray.push(doctor.uid)
+        $("#doctors-form").append("<option class='doctors' value=" + doctor.uid + ">" + "Dr. " + doctor.profile.first_name + " " + doctor.profile.last_name  + ", " + doctor.profile.title + "</option>");
+        doctorsArray.push(doctor.uid)
       });
       console.log(doctorsArray.length);
     if (doctorsArray.length === 0) {
